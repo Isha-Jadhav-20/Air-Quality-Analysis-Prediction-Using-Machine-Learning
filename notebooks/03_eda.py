@@ -11,7 +11,7 @@ df["date"] = pd.to_datetime(df["date"])
 
 sns.set_theme(style="whitegrid")
 
-# 1. AQI Distribution
+# 1) AQI Distribution
 plt.figure(figsize=(10, 5))
 sns.histplot(df["india_aqi"], bins=30, kde=True)
 plt.title("Distribution of AQI")
@@ -21,7 +21,7 @@ plt.tight_layout()
 plt.savefig("graphs/01_aqi_distribution.png",dpi = 300)
 plt.show()
 
-# 2. Top 10 Cities by Average AQI
+# 2) Top 10 Cities by Average AQI
 city_aqi = (
     df.groupby("city")["india_aqi"]
     .mean()
@@ -38,7 +38,7 @@ plt.tight_layout()
 plt.savefig("graphs/02_top_10_cities.png",dpi = 300)
 plt.show()
 
-# 3. Monthly AQI Trend
+# 3) Monthly AQI Trend
 df["month"] = df["date"].dt.to_period("M").astype(str)
 
 monthly_aqi = df.groupby("month")["india_aqi"].mean()
@@ -53,7 +53,7 @@ plt.tight_layout()
 plt.savefig("graphs/03_monthly_aqi_trend.png",dpi = 300)
 plt.show()
 
-# 4. Correlation Heatmap
+# 4) Correlation Heatmap
 numeric_columns = [
     "pm2_5_mean",
     "pm10_mean",
@@ -79,7 +79,7 @@ plt.tight_layout()
 plt.savefig("graphs/04_correlation_heatmap.png",dpi = 300)
 plt.show()
 
-# 5. PM2.5 vs AQI
+# 5) PM2.5 vs AQI
 plt.figure(figsize=(10, 5))
 sns.scatterplot(
     data=df,
@@ -95,4 +95,4 @@ plt.tight_layout()
 plt.savefig("graphs/05_pm25_vs_aqi.png",dpi = 300)
 plt.show()
 
-print("\n===== EDA COMPLETED SUCCESSFULLY =====")
+print("\n----- EDA COMPLETED SUCCESSFULLY -----")

@@ -18,13 +18,13 @@ from sklearn.metrics import (
     r2_score
 )
 
-# 1. Load cleaned dataset
+# 1) Load cleaned dataset
 df = pd.read_csv("dataset/cleaned_aqi.csv")
 df["date"] = pd.to_datetime(df["date"])
 
 print("Dataset Shape:", df.shape)
 
-# 2. Select input features and target
+# 2) Select input features and target
 numeric_features = [
     "pm2_5_mean",
     "pm10_mean",
@@ -39,7 +39,7 @@ categorical_features = ["city"]
 X = df[numeric_features + categorical_features]
 y = df["india_aqi"]
 
-# 3. Chronological train-test split
+# 3) Chronological train-test split
 unique_dates = sorted(df["date"].unique())
 
 split_index = int(len(unique_dates) * 0.80)
@@ -58,7 +58,7 @@ print("\nTraining Records:", len(X_train))
 print("Testing Records:", len(X_test))
 print("Test Start Date:", split_date)
 
-# 4. Preprocessing
+# 4) Preprocessing
 preprocessor = ColumnTransformer(
     transformers=[
         ("numeric", StandardScaler(), numeric_features),
@@ -69,7 +69,7 @@ preprocessor = ColumnTransformer(
     ]
 )
 
-# 5. Define ML models
+# 5) Define ML models
 models = {
     "Linear Regression": LinearRegression(),
 
@@ -91,7 +91,7 @@ models = {
 results = []
 trained_models = {}
 
-# 6. Train and evaluate models
+# 6) Train and evaluate models
 for name, algorithm in models.items():
 
     print(f"\nTraining {name}...")
@@ -125,7 +125,7 @@ for name, algorithm in models.items():
     print("RMSE:", round(rmse, 3))
     print("R2 Score:", round(r2, 3))
 
-# 7. Compare model performance
+# 7) Compare model performance
 results_df = pd.DataFrame(results)
 
 results_df = results_df.sort_values(
@@ -133,10 +133,10 @@ results_df = results_df.sort_values(
     ascending=True
 )
 
-print("\n===== MODEL COMPARISON =====")
+print("\n----- MODEL COMPARISON -----")
 print(results_df.to_string(index=False))
 
-# 8. Select best model based on lowest RMSE
+# 8) Select best model based on lowest RMSE
 best_model_name = results_df.iloc[0]["Model"]
 best_model = trained_models[best_model_name]
 

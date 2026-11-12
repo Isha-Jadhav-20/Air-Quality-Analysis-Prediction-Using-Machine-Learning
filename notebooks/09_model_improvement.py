@@ -14,15 +14,14 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error, r2_score
 
 
-# 1. Load Cleaned Dataset
+# 1) Load Cleaned Dataset
 df = pd.read_csv("dataset/cleaned_aqi.csv")
 
 df["date"] = pd.to_datetime(df["date"])
 
 print("Dataset Shape:", df.shape)
 
-
-# 2. Select Features and Target
+# 2) Select Features and Target
 features = [
     "pm2_5_mean",
     "pm10_mean",
@@ -36,8 +35,7 @@ features = [
 X = df[features]
 y = df["india_aqi"]
 
-
-# 3. Chronological Train-Test Split
+# 3) Chronological Train-Test Split
 dates = sorted(df["date"].unique())
 
 split_index = int(len(dates) * 0.8)
@@ -50,8 +48,7 @@ print("\nTraining Data:", train_df.shape)
 print("Testing Data:", test_df.shape)
 print("Split Date:", split_date)
 
-
-# 4. Create Training and Validation Data
+# 4) Create Training and Validation Data
 train_dates = sorted(train_df["date"].unique())
 
 val_index = int(len(train_dates) * 0.8)
@@ -69,8 +66,7 @@ y_val = validation_data["india_aqi"]
 print("\nModel Training Rows:", len(X_train))
 print("Validation Rows:", len(X_val))
 
-
-# 5. Preprocessing
+# 5) Preprocessing
 numeric_features = [
     "pm2_5_mean",
     "pm10_mean",
@@ -91,8 +87,7 @@ preprocessor = ColumnTransformer(
     ]
 )
 
-
-# 6. Try Different Models
+# 6) Try Different Models
 models = {
     "Random Forest 1": RandomForestRegressor(
         n_estimators=100,
@@ -125,8 +120,7 @@ models = {
     )
 }
 
-
-# 7. Train and Evaluate Models on Validation Data
+# 7) Train and Evaluate Models on Validation Data
 results = []
 
 for name, model in models.items():
@@ -160,12 +154,12 @@ for name, model in models.items():
     print("R2 Score:", round(r2, 4))
 
 
-# 8. Compare Validation Results
+# 8) Compare Validation Results
 results_df = pd.DataFrame(results)
 
 results_df = results_df.sort_values("RMSE")
 
-print("\n========== VALIDATION RESULTS ==========")
+print("\n----- VALIDATION RESULTS -----")
 print(results_df.to_string(index=False))
 
 best_model_name = results_df.iloc[0]["Model"]
@@ -173,7 +167,7 @@ best_model_name = results_df.iloc[0]["Model"]
 print("\nBest Model:", best_model_name)
 
 
-# 9. Train Best Model on Full Training Data
+# 9) Train Best Model on Full Training Data
 best_model = models[best_model_name]
 
 final_pipeline = Pipeline([
@@ -187,7 +181,7 @@ final_pipeline.fit(
 )
 
 
-# 10. Final Evaluation on Test Data
+# 10) Final Evaluation on Test Data
 X_test = test_df[features]
 y_test = test_df["india_aqi"]
 
@@ -198,7 +192,7 @@ test_mse = mean_squared_error(y_test, test_predictions)
 test_rmse = np.sqrt(test_mse)
 test_r2 = r2_score(y_test, test_predictions)
 
-print("\n========== FINAL TEST RESULTS ==========")
+print("\n----- FINAL TEST RESULTS -----")
 print("Selected Model:", best_model_name)
 print("MAE:", round(test_mae, 3))
 print("MSE:", round(test_mse, 3))
@@ -206,7 +200,7 @@ print("RMSE:", round(test_rmse, 3))
 print("R2 Score:", round(test_r2, 4))
 
 
-# 11. Save Final Model
+# 11) Save Final Model
 os.makedirs("models", exist_ok=True)
 
 joblib.dump(

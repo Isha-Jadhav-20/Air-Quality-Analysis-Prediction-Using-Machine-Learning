@@ -1,4 +1,3 @@
-
 import pandas as pd
 import joblib
 import numpy as np
@@ -50,15 +49,15 @@ results["Absolute Error"] = np.abs(
     y_test.values - predictions
 )
 
-# 1. Training and testing target ranges
-print("\n===== AQI RANGE =====")
+# 1) Training and testing target ranges
+print("\n----- AQI RANGE -----")
 print("Training minimum:", y_train.min())
 print("Training maximum:", y_train.max())
 print("Testing minimum:", y_test.min())
 print("Testing maximum:", y_test.max())
 
-# 2. Extreme AQI records
-print("\n===== RECORDS WITH AQI >= 400 =====")
+# 2) Extreme AQI records
+print("\n----- RECORDS WITH AQI >= 400 ------")
 
 extreme = results[results["Actual AQI"] >= 400]
 
@@ -69,7 +68,7 @@ print(extreme.sort_values(
 # 3. City-wise evaluation
 results["Absolute Error"] = results["Absolute Error"]
 
-print("\n===== CITY-WISE MAE =====")
+print("\n----- CITY-WISE MAE -----")
 
 print(
     results.groupby("city")
@@ -84,7 +83,7 @@ print(
     .head(10)
 )
 
-# 4. AQI range-wise performance
+# 4) AQI range-wise performance
 results["AQI Range"] = pd.cut(
     results["Actual AQI"],
     bins=[0, 100, 200, 300, 400, 500],
@@ -92,7 +91,7 @@ results["AQI Range"] = pd.cut(
     include_lowest=True
 )
 
-print("\n===== PERFORMANCE BY AQI RANGE =====")
+print("\n----- PERFORMANCE BY AQI RANGE -----")
 
 print(
     results.groupby("AQI Range", observed=False)
@@ -102,8 +101,8 @@ print(
     )
 )
 
-# 5. Check pollutant values for extreme records
-print("\n===== EXTREME RECORD POLLUTANTS =====")
+# 5) Check pollutant values for extreme records
+print("\n----- EXTREME RECORD POLLUTANTS -----")
 
 extreme_indices = results[
     results["Actual AQI"] >= 400
@@ -116,7 +115,7 @@ print(
     ].head(20).to_string(index=False)
 )
 
-# 6. Inspect pollutants for largest prediction errors
+# 6) Inspect pollutants for largest prediction errors
 
 results["Absolute Error"] = np.abs(
     results["Actual AQI"] - results["Predicted AQI"]
@@ -127,7 +126,7 @@ largest_errors = results.sort_values(
     ascending=False
 ).head(15)
 
-print("\n===== LARGEST ERROR RECORDS WITH POLLUTANTS =====")
+print("\n----- LARGEST ERROR RECORDS WITH POLLUTANTS -----")
 
 error_details = largest_errors.merge(
     df[["date", "city",

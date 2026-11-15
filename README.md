@@ -239,6 +239,7 @@ An interactive web application was developed using Streamlit.
 ![City Wise Prediction](./Dashboard_Screenshot/City_Wise_Prediction.png)
 
 ---
+```
 
 AQI_Prediction/
 │
@@ -281,6 +282,7 @@ AQI_Prediction/
 └── README.md
 ```
 
+```
 ## 🚀 Installation & Execution
 
 ### 1. Navigate to Project Folder

@@ -286,6 +286,7 @@ AQI_Prediction/
 ## 🚀 Installation & Execution
 
 ### 1. Navigate to Project Folder
+```
 
 ```bash
 cd AQI_Prediction

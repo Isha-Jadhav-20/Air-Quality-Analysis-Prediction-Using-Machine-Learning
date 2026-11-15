@@ -224,19 +224,19 @@ An interactive web application was developed using Streamlit.
 
 ### 1. Dashboard Overview
 
-![Dashboard Overview](Dashboard_Screenshot\Dashboard.png)
+![Dashboard Overview](./Dashboard_Screenshot/Dashboard.png)
 
 ### 2. AQI Prediction
 
-![AQI Prediction](Dashboard_Screenshot\AQI_Distribution.png)
+![AQI Prediction](./Dashboard_Screenshot/AQI_Distribution.png)
 
 ### 3. Pollutant Analysis
 
-![Pollutant Analysis](Dashboard_Screenshot\Pollutant_Analysis.png)
+![Pollutant Analysis](./Dashboard_Screenshot/Pollutant_Analysis.png)
 
 ### 4. City Wise Prediction
 
-![City Wise Prediction](Dashboard_Screenshot\City_Wise_Prediction.png)
+![City Wise Prediction](./Dashboard_Screenshot/City_Wise_Prediction.png)
 
 ---
 
@@ -279,6 +279,7 @@ AQI_Prediction/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
 ## 🚀 Installation & Execution
 

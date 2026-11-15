@@ -1,3 +1,4 @@
+
 # 🌍 Air Quality Index (AQI) Prediction Using Machine Learning
 
 ### 🤖 Machine Learning Based Project using Python, Scikit-learn & Streamlit
@@ -58,15 +59,13 @@ The main objective of this project is to develop a Machine Learning model that p
 
 ## 📂 Dataset Information
 
-**Dataset Name:** India Daily Weather and Air Quality
-
-**Dataset Source:** Kaggle
-
-**Dataset Creator:** AkshayKarthick
-
-**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
-
-**License Link:** https://creativecommons.org/licenses/by/4.0/
+| Description | Details |
+|---|---|
+| Dataset Name | India Daily Weather and Air Quality |
+| Dataset Creator | AkshayKarthick |
+| Dataset Source | [Kaggle Dataset](https://www.kaggle.com/datasets/akshaykarthickms007/india-daily-weather-and-air-quality) |
+| License | CC BY 4.0 |
+| License Link | [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 ### Dataset Details
 
@@ -82,6 +81,7 @@ The main objective of this project is to develop a Machine Learning model that p
 ### Features Used
 
 **Input Features:**
+
 - PM2.5 – Fine Particulate Matter
 - PM10 – Particulate Matter
 - NO2 – Nitrogen Dioxide
@@ -118,9 +118,11 @@ The original dataset was cleaned and preprocessed before being used for Machine 
 - PM2.5 vs AQI Relationship
 
 ### 4. Model Training
+
 Implemented and compared three regression algorithms.
 
 ### 5. Model Evaluation
+
 Evaluated model performance using MAE, MSE, RMSE and R² Score.
 
 ### 6. Error Investigation
@@ -130,12 +132,15 @@ Evaluated model performance using MAE, MSE, RMSE and R² Score.
 - Training and testing data distribution comparison.
 
 ### 7. Model Improvement
+
 Compared different Random Forest configurations and selected the best-performing validation model.
 
 ### 8. Final Testing
+
 Evaluated the selected model on the chronological testing dataset.
 
 ### 9. Streamlit Application
+
 Developed an interactive web application for AQI prediction and historical dataset analysis.
 
 ---
@@ -226,9 +231,9 @@ An interactive web application was developed using Streamlit.
 
 ![Dashboard Overview](./Dashboard_Screenshot/Dashboard.png)
 
-### 2. AQI Prediction
+### 2. AQI Distribution
 
-![AQI Prediction](./Dashboard_Screenshot/AQI_Distribution.png)
+![AQI Distribution](./Dashboard_Screenshot/AQI_Distribution.png)
 
 ### 3. Pollutant Analysis
 
@@ -239,8 +244,10 @@ An interactive web application was developed using Streamlit.
 ![City Wise Prediction](./Dashboard_Screenshot/City_Wise_Prediction.png)
 
 ---
-```
 
+## 📁 Project Structure
+
+```text
 AQI_Prediction/
 │
 ├── dataset/
@@ -282,11 +289,11 @@ AQI_Prediction/
 └── README.md
 ```
 
-```
+---
+
 ## 🚀 Installation & Execution
 
 ### 1. Navigate to Project Folder
-```
 
 ```bash
 cd AQI_Prediction
@@ -324,9 +331,12 @@ The application will open in your web browser:
 http://localhost:8501
 ```
 
+---
+
 ## 👩‍💻 Author
 
 **Isha Namdev Jadhav**
 
 B.Tech – Computer Science and Engineering
 
+---
